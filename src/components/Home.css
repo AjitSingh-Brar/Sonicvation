@@ -1,14 +1,27 @@
 .home {
-  background-color: blue;
+  background: url("https://image.freepik.com/free-vector/white-abstract-background_23-2148817571.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 100vw;
-  height: 89.3vh;
+  height: 89vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .homeContainer {
-  width: 500px;
+  width: 650px;
   height: 300px;
-  background-color: pink;
+  margin-left: 100px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+.homeContainer h2 {
+  margin-bottom: 40px;
+  font-size: 40px;
+}
+.homeContainer p {
+  margin-left: 10px;
+  width: 70%;
 }
