@@ -1,0 +1,14 @@
+.home {
+  background-color: blue;
+  width: 100vw;
+  height: 89.3vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.homeContainer {
+  width: 500px;
+  height: 300px;
+  background-color: pink;
+}

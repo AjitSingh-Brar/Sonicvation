@@ -1,0 +1,42 @@
+.header {
+  background-color: black;
+  width: 100vw;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+.headerLogo {
+  width: 70px;
+  height: 80px;
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: pink; */
+}
+.headerLogo img {
+  height: 100%;
+}
+
+.headerLogin {
+  width: 100px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.headerLoginButton {
+  border: 1px solid whitesmoke;
+  color: #fff;
+  padding: 7px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  transition: all 250ms ease-in-out 0s;
+}
+.headerLoginButton:hover {
+  background-color: #f9f9f9;
+  color: #000;
+  border-color: transparent;
+}
