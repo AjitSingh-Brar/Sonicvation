@@ -10,7 +10,7 @@
 }
 
 .homeContainer {
-  width: 650px;
+  width: 780px;
   height: 300px;
   margin-left: 100px;
   display: flex;
@@ -19,7 +19,7 @@
 }
 .homeContainer h2 {
   margin-bottom: 40px;
-  font-size: 40px;
+  font-size: 50px;
 }
 .homeContainer p {
   margin-left: 10px;

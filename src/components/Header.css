@@ -6,23 +6,23 @@
   justify-content: space-between;
 }
 .headerLogo {
+  flex: 0.5;
   width: 70px;
   height: 80px;
   margin-left: 20px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  /* background-color: pink; */
 }
 .headerLogo img {
   height: 100%;
 }
 
 .headerLogin {
+  flex: 0.5;
   width: 100px;
   margin-right: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 
