@@ -1,10 +1,9 @@
 import React from "react";
 import "./Header.css";
+import MenuIcon from "@material-ui/icons/Menu";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function Header() {
-
-
   return (
     <div className="header">
       <Link to="/">
@@ -28,6 +27,9 @@ function Header() {
           <a href="#">
             <span>CONTACT</span>
           </a>
+        </div>
+        <div className="header__menu">
+          <MenuIcon />
         </div>
       </div>
     </div>

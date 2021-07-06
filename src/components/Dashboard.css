@@ -8,25 +8,29 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 89.3vh;
+  width: 100vw;
+  height: 89.2vh;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
 
 .dashboard__container {
   height: 100%;
-  background-color: whitesmoke;
+  background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.dashboard__container h2 {
+  margin-top: 30px;
 }
 
 .dashboard__container form {
   width: 90%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  margin-top: 60px;
-  padding: 20px;
+  margin-top: 0;
+  padding: 10px;
 }
 
 .dashboard__container form h4 {
@@ -40,16 +44,59 @@
   width: 300px;
   height: 35px;
   padding: 0px 20px;
+  border: 1px solid lightgray;
+  outline: none;
+  background-color: rgb(255, 254, 254);
 }
 .dashboard__container form div:nth-last-child(2) {
   grid-column: span 2;
 }
 
 .submit_button {
-  width: 100px;
-  height: 30px;
+  width: 150px;
+  height: 40px;
   grid-column: span 2;
-  margin-top: 50px;
+  margin: 20px 0;
+  background-color: rgb(219, 59, 59);
+  cursor: pointer;
+  color: white;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid rgb(184, 181, 181);
+  font-size: 16px;
+}
+
+.submit_button:hover {
+  background-color: rgb(223, 89, 89);
+}
+
+.button__group {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  border-top: 3px solid whitesmoke;
+  margin: 10px 0;
+}
+
+.display__button,
+.explain__button {
+  width: 150px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.dashboard__result {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard__displayedInfo {
+  background-color: pink;
+  width: 55%;
+  height: 80%;
 }
 
 @media screen and (max-width: 1500px) {
@@ -59,16 +106,61 @@
     height: 35px;
     padding: 0px 20px;
   }
+
+
 }
 
 @media screen and (max-width: 1220px) {
+  .dashboard__container {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .dashboard__container form {
+    margin-top: 0px;
+  }
   .dashboard__container form input {
     margin-bottom: 5px;
-    width: 300px;
+    width: 250px;
     height: 35px;
-    padding: 0px 20px;
+    padding: 0px 10px;
   }
   .dashboard {
     grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .dashboard__displayedInfo {
+    background-color: pink;
+    width: 65%;
+    height: 90%;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .dashboard__container form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard__container form div {
+    width: 100%;
+    margin-left: 20px;
+  }
+
+  .dashboard__container form input {
+    margin-bottom: 5px;
+    width: 200px;
+    height: 35px;
+    padding: 0px 10px;
+  }
+
+  .submit_button {
+    margin-left: 20px;
+  }
+
+  .dashboard__displayedInfo {
+    background-color: pink;
+    width: 80%;
+    height: 80%;
   }
 }

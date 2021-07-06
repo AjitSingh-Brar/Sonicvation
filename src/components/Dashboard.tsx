@@ -21,7 +21,7 @@ function Dashboard() {
           </div>
           <div>
             <h4>Date of Entry</h4>
-            <input type="date" min="2018-01-01" max="2018-12-31" />
+            <input type="date" />
           </div>
           <div>
             <h4>Profession</h4>
@@ -29,8 +29,14 @@ function Dashboard() {
           </div>
           <button className="submit_button">Submit</button>
         </form>
+        <div className="button__group">
+          <button className="display__button">Register</button>
+          <button className="explain__button">Export your result</button>
+        </div>
       </div>
-      <div className="dashboard__result"></div>
+      <div className="dashboard__result">
+        <div className="dashboard__displayedInfo"></div>
+      </div>
     </div>
   );
 }
