@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { auth } from "../firebase";
+import { useHistory } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -13,6 +16,19 @@ function Login() {
 
   const register = (e: any) => {
     e.preventDefault();
+
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((auth) => {
+        //successfully created a user with email and password
+        console.log(auth);
+        if (auth) {
+          history.push("/");
+        }
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
 
     //here do some fancy firbase register
   };

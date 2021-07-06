@@ -6,8 +6,12 @@ const firebaseConfig = {
   projectId: "sonicvation",
   storageBucket: "sonicvation.appspot.com",
   messagingSenderId: "829889164948",
-  appId: "1:829889164948:web:65f7cb3aadceabe5a62681"
+  appId: "1:829889164948:web:65f7cb3aadceabe5a62681",
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
+const db = firebaseApp.firestore();
+const auth = firebaseApp.auth();
+
+export { db, auth };
