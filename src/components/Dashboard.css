@@ -1,3 +1,74 @@
-.login{
-	background: url("")
+.dashboard {
+  background: #c33764; /* fallback colour. Make sure this is just one solid colour. */
+  background: -webkit-linear-gradient(
+      rgba(190, 193, 214, 0.8),
+      rgba(68, 69, 75, 0.8)
+    ),
+    url("https://coolbackgrounds.io/images/backgrounds/white/white-unsplash-9d0375d2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 89.3vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.dashboard__container {
+  height: 100%;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard__container form {
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 60px;
+  padding: 20px;
+}
+
+.dashboard__container form h4 {
+  font-size: 17px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.dashboard__container form input {
+  margin-bottom: 5px;
+  width: 300px;
+  height: 35px;
+  padding: 0px 20px;
+}
+.dashboard__container form div:nth-last-child(2) {
+  grid-column: span 2;
+}
+
+.submit_button {
+  width: 100px;
+  height: 30px;
+  grid-column: span 2;
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 1500px) {
+  .dashboard__container form input {
+    margin-bottom: 5px;
+    width: 250px;
+    height: 35px;
+    padding: 0px 20px;
+  }
+}
+
+@media screen and (max-width: 1220px) {
+  .dashboard__container form input {
+    margin-bottom: 5px;
+    width: 300px;
+    height: 35px;
+    padding: 0px 20px;
+  }
+  .dashboard {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

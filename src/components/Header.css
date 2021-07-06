@@ -6,8 +6,7 @@
   justify-content: space-between;
 }
 .headerLogo {
-  flex: 0.5;
-  width: 70px;
+  width: 100px;
   height: 80px;
   margin-left: 20px;
   display: flex;

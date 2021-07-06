@@ -1,11 +1,19 @@
 import React from "react";
 import "./Header.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 function Header() {
+
+
   return (
     <div className="header">
-      <div className="headerLogo">
-        <img src="/images/logo_app.png" alt="image-logo" />
-      </div>
+      <Link to="/">
+        <img
+          src="/images/logo_app.png"
+          className="headerLogo"
+          alt="image-logo"
+        />
+      </Link>
       <div className="headerLogin">
         <div className="header__NavBar">
           <a href="#">

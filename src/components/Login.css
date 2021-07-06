@@ -21,12 +21,18 @@
   border: 1px solid rgb(240, 238, 238);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-evenly;
   opacity: 1;
 }
+
+.login__container div h1 {
+  font-weight: 500;
+  margin-left: 20px;
+}
 .login__inputContainer {
   width: 100%;
+
   flex: 0.4;
   display: flex;
   align-items: center;
@@ -58,6 +64,14 @@
 .login__passwordInput input::placeholder {
   color: rgb(192, 192, 192);
 }
+.login__buttonContainer {
+  margin-top: 30px;
+}
+
+.login__buttonContainer div {
+  text-align: center;
+  margin: 10px 0px;
+}
 
 .login__button {
   border: 2px solid whitesmoke;
@@ -65,8 +79,21 @@
   cursor: pointer;
   background-color: rgb(219, 59, 59);
   color: white;
+  font-weight: 500;
+  font-size: 16px;
   transition: all 0.2s ease-in-out;
 }
 .login__button:hover {
   background-color: rgb(223, 89, 89);
+}
+
+.register {
+  background-color: rgb(223, 219, 219);
+  padding: 15px 145px;
+  color: black;
+  border: 0.1px darkgrey;
+}
+
+.register:hover {
+  background-color: rgb(202, 196, 196);
 }
