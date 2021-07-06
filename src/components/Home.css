@@ -1,5 +1,5 @@
 .home {
-  background: url("https://image.freepik.com/free-vector/white-abstract-background_23-2148817571.jpg");
+  background: url("https://coolbackgrounds.io/images/backgrounds/white/white-unsplash-9d0375d2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100vw;
@@ -10,7 +10,7 @@
 }
 
 .homeContainer {
-  width: 780px;
+  width: 900px;
   height: 300px;
   margin-left: 100px;
   display: flex;
@@ -19,9 +19,9 @@
 }
 .homeContainer h2 {
   margin-bottom: 40px;
-  font-size: 50px;
+  font-size: 60px;
 }
 .homeContainer p {
   margin-left: 10px;
-  width: 70%;
+  width: 60%;
 }
