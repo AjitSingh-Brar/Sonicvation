@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import { auth } from "../firebase";
 import { useHistory } from "react-router-dom";
 import "./Login.css";
+import { selectUserName, setUserLoginDetails } from "../slices/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function Login() {
+  const dispatch = useDispatch();
+  const user = useSelector(selectUserName);
+
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,9 +16,21 @@ function Login() {
   const signIn = (e: any) => {
     e.preventDefault();
 
-    auth.signInWithEmailAndPassword(email, password).then(auth=>{
-      history.push("/dashboard");
-    }).catch(error => alert(error.message))
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((auth) => {
+        console.log(auth, "hERE IS THE USER");
+        if (auth) {
+          dispatch(
+            setUserLoginDetails({
+              name: auth.user?.email,
+              id: auth.user?.uid,
+            })
+          );
+        }
+        history.push("/dashboard");
+      })
+      .catch((error) => alert(error.message));
 
     // some fancy firebase ogin shittt
   };
@@ -33,7 +50,6 @@ function Login() {
       .catch((error) => {
         alert(error.message);
       });
- 
   };
 
   return (

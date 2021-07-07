@@ -18,7 +18,9 @@ function App() {
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         //user just logged in or use was logged in
-        dispatch(setUserLoginDetails(authUser.email));
+        dispatch(
+          setUserLoginDetails({ name: authUser.email, id: authUser.uid })
+        );
       } else {
         //user is logged out.
         dispatch(setSignOutState());
