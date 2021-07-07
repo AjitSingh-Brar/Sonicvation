@@ -11,6 +11,10 @@ function Login() {
   const signIn = (e: any) => {
     e.preventDefault();
 
+    auth.signInWithEmailAndPassword(email, password).then(auth=>{
+      history.push("/dashboard");
+    }).catch(error => alert(error.message))
+
     // some fancy firebase ogin shittt
   };
 
@@ -29,8 +33,7 @@ function Login() {
       .catch((error) => {
         alert(error.message);
       });
-
-    //here do some fancy firbase register
+ 
   };
 
   return (

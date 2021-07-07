@@ -1,8 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import "./Dashboard.css";
-
+import { useDispatch, useSelector } from "react-redux";
+import { selectUserName, setSignOutState } from "../slices/userSlice";
+import { auth } from "../firebase";
+import { useHistory } from "react-router-dom";
 function Dashboard() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [uID, setUID] = useState("");
@@ -11,12 +17,26 @@ function Dashboard() {
   );
   const [profession, setProfession] = useState("");
 
-  
+  const userName = useSelector(selectUserName);
+
+  const handleAuthentication = () => {
+    if (userName) {
+      dispatch(setSignOutState());
+      auth.signOut();
+      history.push("/");
+    }
+  };
 
   return (
     <div className="dashboard">
       <div className="dashboard__container">
-        <h2>Welcome, test123@gmail.com</h2>
+        <div className="dashboard__welcomeMessage">
+          <h2>Welcome, {userName}</h2>
+          <div className="dashboard__signOut" onClick={handleAuthentication}>
+            <span>Sign out</span>
+          </div>
+        </div>
+
         <form>
           <div>
             <h4>First Name</h4>

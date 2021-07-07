@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { auth } from "./firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { setSignOutState, setUserLoginDetails } from "./slices/userSlice";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // it runs only once when app component loads..
+
+    auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        //user just logged in or use was logged in
+        dispatch(setUserLoginDetails(authUser.email));
+      } else {
+        //user is logged out.
+        dispatch(setSignOutState());
+      }
+    });
+  }, []);
   return (
     <div className="App">
       <Router>
