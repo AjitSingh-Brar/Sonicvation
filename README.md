@@ -6,14 +6,14 @@ Necessary Task performed:
 1. Business plan and a Software Requirement Document prepared according to the user needs.
 2. Technology Stack:
 
- a. React as the front-end Library
+    a. React as the front-end Library
  
- b. Redux for the state managment process, which acts as the data layer
+    b. Redux for the state managment process, which acts as the data layer
  
- c. Hooks: useState and useEffect used to as it always use functions instead of having to constantly switch between functions, classes, higher-order components, and render 
+    c. Hooks: useState and useEffect used to as it always use functions instead of having to constantly switch between functions, classes, higher-order components, and render 
     props.
     
- d. Firebase: Being a rising development platform similar to AWS. It is easy to authenticate users, store data and user metadata securely, authorise access to data selectively, and integrate machine learning. Hence, for user authenctication via REST APIs and for the real time database Firebase Firestore was used, which creates a new, more intuitive data model.
+    d. Firebase: Being a rising development platform similar to AWS. It is easy to authenticate users, store data and user metadata securely, authorise access to data selectively, and integrate machine learning. Hence, for user authenctication via REST APIs and for the real time database Firebase Firestore was used, which creates a new, more intuitive data model.
  
  
 ![image](https://user-images.githubusercontent.com/68308589/125020074-2a7b7a80-e046-11eb-9be1-0131f5216ee2.png)
