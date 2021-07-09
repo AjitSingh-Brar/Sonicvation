@@ -88,7 +88,9 @@ function Dashboard() {
   };
 
   // adding user details in the cloud firestore.
-  const addUserDetails = () => {
+  const addUserDetails = (e: any) => {
+    e.preventDefault();
+
     let docRef = db.collection("usersData").doc(uid);
 
     docRef.get().then((doc) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 import MenuIcon from "@material-ui/icons/Menu";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 
