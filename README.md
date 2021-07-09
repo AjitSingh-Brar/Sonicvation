@@ -11,7 +11,8 @@ Necessary Task performed:
     props.
  d. Firebase: Being a rising development platform similar to AWS. It is easy to authenticate users, store data and user metadata securely, authorise access to data selectively, and integrate machine learning. Hence, for user authenctication via REST APIs and for the real time database Firebase Firestore was used, which creates a new, more intuitive data model.
  
- ![image](https://user-images.githubusercontent.com/68308589/125019905-ce185b00-e045-11eb-8c9f-71388687f5bd.png)
+![image](https://user-images.githubusercontent.com/68308589/125020074-2a7b7a80-e046-11eb-9be1-0131f5216ee2.png)
+
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
