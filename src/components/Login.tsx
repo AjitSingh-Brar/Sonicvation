@@ -8,14 +8,12 @@ import { useEffect } from "react";
 import LoadingScreen from "./LoadingScreen";
 
 function Login() {
-
   // state variables
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 2000);
   }, []);
-
 
   const dispatch = useDispatch();
   const user = useSelector(selectUserName);
