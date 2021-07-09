@@ -25,7 +25,7 @@ function Header() {
           </Link>
           <div className="header__Login">
             <div className="header__NavBar">
-              <a href="#">
+              <a href="/">
                 <span>HOME</span>
               </a>
               <a href="#">
