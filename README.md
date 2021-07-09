@@ -1,6 +1,18 @@
 ## Sonicvation
 
-Goal: Enables users on website to login securely to access a dashboard, create records/entries that are submitted to a database using a web form, and be able to export those entries to a file that can exported to be stored locally on a device.
+Goal: A website which enables users to login securely to access a dashboard, create records/entries that are submitted to a database using a web form, and be able to export those entries to a file that can exported to be stored locally on a device.  Desktop and Tablet responsive as per the requirement.
+
+Necessary Task performed: 
+1. Business plan and a Software Requirement Document prepared according to the user needs.
+2. Technology Stack:
+ a. React as the front-end Library
+ b. Redux for the state managment process, which acts as the data layer
+ c. Hooks: useState and useEffect used to as it always use functions instead of having to constantly switch between functions, classes, higher-order components, and render 
+    props.
+ d. Firebase: Being a rising development platform similar to AWS. It is easy to authenticate users, store data and user metadata securely, authorise access to data selectively, and integrate machine learning. Hence, for user authenctication via REST APIs and for the real time database Firebase Firestore was used, which creates a new, more intuitive data model.
+ 
+ ![image](https://user-images.githubusercontent.com/68308589/125019905-ce185b00-e045-11eb-8c9f-71388687f5bd.png)
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
