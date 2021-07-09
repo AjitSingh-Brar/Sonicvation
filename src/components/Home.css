@@ -41,6 +41,6 @@
   transition: all 0.2s ease-in-out;
 }
 
-.headContainer button:hover {
-  background-color: rgb(223, 89, 89);
+.home__Container button:hover {
+  background-color: rgb(219, 92, 92);
 }

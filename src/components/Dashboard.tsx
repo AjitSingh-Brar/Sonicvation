@@ -1,20 +1,25 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Dashboard.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectId, selectUserName, setSignOutState } from "../slices/userSlice";
 import { auth, db } from "../firebase";
 import { useHistory } from "react-router-dom";
-
-import { useEffect } from "react";
+import LoadingScreen from "./LoadingScreen";
 
 function Dashboard() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 2000);
+  }, []);
+
   const dispatch = useDispatch();
   const history = useHistory();
 
   const userName = useSelector(selectUserName);
   const uid = useSelector(selectId);
 
+  // state variables for storing the form details
   const [userFirstName, setUserFirstName] = useState("");
   const [userLastName, setUserLastName] = useState("");
   const [userUID, setUserUID] = useState("");
@@ -23,10 +28,40 @@ function Dashboard() {
   );
   const [userProfession, setUserProfession] = useState("");
 
-  const [userDetails, setUserDetails] = useState<any | null>("");
+  // state variables for the dealing with user information from the database.
+  const [userDetails, setUserDetails] = useState<any>("");
+  const [exportDetails, setExportDetails] = useState<any | null>(null);
 
-  const [exportDetails, setExportDetails] = useState<any | null>("");
+  if (exportDetails !== null) {
+    let data =
+      "\r First Name:" +
+      exportDetails.firstName +
+      " \r\n " +
+      " Last Name:" +
+      exportDetails.lastName +
+      " \r\n " +
+      "uID: " +
+      exportDetails.uID +
+      " \r\n" +
+      "Country: " +
+      exportDetails.dateofEntry +
+      " \r\n " +
+      "Message: " +
+      exportDetails.profession;
 
+    const textToBLOB = new Blob([data], { type: "text/plain" });
+    const sFileName = "myData.txt"; // The file to save the data.
+
+    const element = document.createElement("a");
+    element.href = URL.createObjectURL(textToBLOB);
+    element.download = sFileName;
+    document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();
+
+    setExportDetails(null);
+  }
+
+  //handling authentication, with Sign out functionality
   const handleAuthentication = () => {
     if (userName) {
       dispatch(setSignOutState());
@@ -35,6 +70,7 @@ function Dashboard() {
     }
   };
 
+  //display functionality for the user to view the information.
   const displayUserDetails = () => {
     let docRef = db.collection("usersData").doc(uid);
     docRef
@@ -51,6 +87,7 @@ function Dashboard() {
       .catch((error) => console.log("Error getting document:", error));
   };
 
+  // adding user details in the cloud firestore.
   const addUserDetails = () => {
     let docRef = db.collection("usersData").doc(uid);
 
@@ -69,7 +106,7 @@ function Dashboard() {
             uID: userUID,
           })
           .then(() => {
-            console.log("Document successfully written");
+            alert("Document successfully written");
           })
           .catch((error) => console.log("Error writing document", error));
       }
@@ -80,150 +117,119 @@ function Dashboard() {
   const exportData = () => {
     console.log(uid);
     let docRef = db.collection("usersData").doc(uid);
-
     docRef
       .get()
       .then((doc) => {
         if (doc.exists) {
           setExportDetails(doc.data());
         } else {
-          alert(
-            "Sorry data cannot be converted, as your data is not added in database"
-          );
+          alert("Your information does not exist, please enter your data");
         }
       })
-      .catch((error) => console.log(error));
-
-    console.log(exportDetails);
-    let data =
-      "\r First Name: " +
-      exportDetails.firstName +
-      " \r\n " +
-      "Last Name: " +
-      exportDetails.lastName +
-      " \r\n " +
-      "uID: " +
-      exportDetails.uID +
-      " \r\n " +
-      "Country: " +
-      exportDetails.dateofEntry +
-      " \r\n " +
-      "Message: " +
-      exportDetails.profession;
-
-    console.log(data);
-
-    const textToBLOB = new Blob([data], { type: "text/plain" });
-    const sFileName = "myData.txt"; // The file to save the data.
-
-    console.log(textToBLOB);
-
-    let newLink = document.createElement("a");
-    newLink.download = sFileName;
-
-    if (window.webkitURL != null) {
-      newLink.href = window.webkitURL.createObjectURL(textToBLOB);
-    } else {
-      newLink.href = window.URL.createObjectURL(textToBLOB);
-      newLink.style.display = "none";
-      document.body.appendChild(newLink);
-    }
-
-    newLink.click();
+      .catch((error) => console.log("Error getting document:", error));
   };
 
   return (
-    <div className="dashboard">
-      <div className="dashboard__container">
-        <div className="dashboard__welcomeMessage">
-          <h2>Welcome, {userName}</h2>
-          <div className="dashboard__signOut" onClick={handleAuthentication}>
-            <span>Sign out</span>
-          </div>
-        </div>
+    <>
+      {loading === false ? (
+        <div className="dashboard">
+          <div className="dashboard__container">
+            <div className="dashboard__welcomeMessage">
+              <h2>Welcome, {userName}</h2>
+              <div
+                className="dashboard__signOut"
+                onClick={handleAuthentication}
+              >
+                <span>Sign out</span>
+              </div>
+            </div>
 
-        <form onSubmit={addUserDetails}>
-          <div>
-            <h4>First Name</h4>
-            <input
-              type="text"
-              required
-              value={userFirstName}
-              onChange={(e) => setUserFirstName(e.target.value)}
-            />
-          </div>
-          <div>
-            <h4>Last Name</h4>
-            <input
-              type="text"
-              required
-              value={userLastName}
-              onChange={(e) => setUserLastName(e.target.value)}
-            />
-          </div>
-          <div>
-            <h4>UID</h4>
-            <input
-              type="text"
-              required
-              value={userUID}
-              onChange={(e) => setUserUID(e.target.value)}
-            />
-          </div>
-          <div>
-            <h4>Date of Entry</h4>
-            <input
-              type="date"
-              required
-              value={userDateOfEntry}
-              onChange={(e) => setUserDateOfEntry(e.target.value)}
-            />
-          </div>
-          <div>
-            <h4>Profession</h4>
-            <input
-              type="text"
-              required
-              value={userProfession}
-              onChange={(e) => setUserProfession(e.target.value)}
-            />
-          </div>
-          <button className="submit_button" type="submit">
-            Submit
-          </button>
-        </form>
-        <div className="button__group">
-          <button className="display__button" onClick={displayUserDetails}>
-            Display
-          </button>
+            <form onSubmit={addUserDetails}>
+              <div>
+                <h4>First Name</h4>
+                <input
+                  type="text"
+                  required
+                  value={userFirstName}
+                  onChange={(e) => setUserFirstName(e.target.value)}
+                />
+              </div>
+              <div>
+                <h4>Last Name</h4>
+                <input
+                  type="text"
+                  required
+                  value={userLastName}
+                  onChange={(e) => setUserLastName(e.target.value)}
+                />
+              </div>
+              <div>
+                <h4>UID</h4>
+                <input
+                  type="text"
+                  required
+                  value={userUID}
+                  onChange={(e) => setUserUID(e.target.value)}
+                />
+              </div>
+              <div>
+                <h4>Date of Entry</h4>
+                <input
+                  type="date"
+                  required
+                  value={userDateOfEntry}
+                  onChange={(e) => setUserDateOfEntry(e.target.value)}
+                />
+              </div>
+              <div>
+                <h4>Profession</h4>
+                <input
+                  type="text"
+                  required
+                  value={userProfession}
+                  onChange={(e) => setUserProfession(e.target.value)}
+                />
+              </div>
+              <button className="submit_button" type="submit">
+                Submit
+              </button>
+            </form>
+            <div className="button__group">
+              <button className="display__button" onClick={displayUserDetails}>
+                Display
+              </button>
 
-          <button className="explain__button" onClick={exportData}>
-            Export your result
-          </button>
-        </div>
-      </div>
-      <div className="dashboard__result">
-        <div className="dashboard__displayedInfo">
-          <div className="dashboard__userInfo">
-            <h3>
-              First Name:<span>{userDetails.firstName}</span>
-            </h3>
-            <h3>
-              Last Name:<span>{userDetails.lastName}</span>
-            </h3>
-            <h3>
-              UID:<span>{userDetails.uID}</span>
-            </h3>
-            <h3>
-              Date of Entry:<span>{userDetails.dateofEntry}</span>
-            </h3>
-            <h3>
-              Profession:<span>{userDetails.profession}</span>
-            </h3>
+              <button className="explain__button" onClick={exportData}>
+                Export your result
+              </button>
+            </div>
+          </div>
+          <div className="dashboard__result">
+            <div className="dashboard__displayedInfo">
+              <div className="dashboard__userInfo">
+                <h3>
+                  First Name:<span>{userDetails.firstName}</span>
+                </h3>
+                <h3>
+                  Last Name:<span>{userDetails.lastName}</span>
+                </h3>
+                <h3>
+                  UID:<span>{userDetails.uID}</span>
+                </h3>
+                <h3>
+                  Date of Entry:<span>{userDetails.dateofEntry}</span>
+                </h3>
+                <h3>
+                  Profession:<span>{userDetails.profession}</span>
+                </h3>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      ) : (
+        <LoadingScreen />
+      )}
+    </>
   );
 }
 
