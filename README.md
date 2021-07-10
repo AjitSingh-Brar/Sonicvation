@@ -16,13 +16,9 @@ Necessary Task performed:
     d. Firebase: Being a rising development platform similar to AWS. It is easy to authenticate users, store data and user metadata securely, authorise access to data selectively, and integrate machine learning. Hence, for user authenctication via REST APIs and for the real time database Firebase Firestore was used, which creates a new, more intuitive data model.
     
 
-Hosting: https://sonicvation.web.app/
-Test Example 1: Email: test123@gmail.com,  password: helloworld
-Test Example 2: Email: test13@gmail.com, password: hellodev
-
-(Note: Existing examples form data is already in the database, so if trying to add again, being unqiue and exisiting, it will not accept any form submission. But as a new registered user, it will accept the form submission. Secondly, if a new registered user tries to see his/her data, without adding anything any data via form. It will display a message saying "add your data for observing or downloading purposes." )
-
-(Note: Registration purpose is done under same application tab of login)
+Hosted Link: https://sonicvation.web.app/
+Test Example 1: Email: test123@gmail.com, password: helloworld
+Test Example 2: Email: test13@gmail.com, passoword: hellodev
  
  
 ![image](https://user-images.githubusercontent.com/68308589/125020074-2a7b7a80-e046-11eb-9be1-0131f5216ee2.png)
