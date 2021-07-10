@@ -17,8 +17,12 @@ Necessary Task performed:
     
 
 Hosted Link: https://sonicvation.web.app/
+
 Test Example 1: Email: test123@gmail.com, password: helloworld
+
 Test Example 2: Email: test13@gmail.com, passoword: hellodev
+
+Note: (The given example are already in the database, so user is only capable to display or export his data, since the data exists, the user cannot add the data again. Secondly, the registration is happening under the same input fields. So new users, are able to add new data, after which their data can be displayed or exported to your local device)
  
  
 ![image](https://user-images.githubusercontent.com/68308589/125020074-2a7b7a80-e046-11eb-9be1-0131f5216ee2.png)
